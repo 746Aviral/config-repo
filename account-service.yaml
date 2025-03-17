@@ -6,6 +6,14 @@ spring:
       poll-interval: 2s
       quiet-period: 1s
 
+  cloud:
+    config:
+      uri: http://localhost:8888  # Config Server URL
+      fail-fast: true  # Ensure it fails fast if config is missing
+
+  profiles:
+    active: default
+
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -20,16 +28,15 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-  spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/capstone
-    username: postgres
-    password: postgres
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
 
 debug: true
 
