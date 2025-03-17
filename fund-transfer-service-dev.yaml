@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: fund-transfer-service
+  devtools:
+    restart:
+      poll-interval: 2s
+      quiet-period: 1s
+
+  kafka:
+      bootstrap-servers: localhost:9092
+
+
+  # Database configuration
+#  datasource:
+#    # for postgres db
+#    url: jdbc:postgresql://localhost:5432/capstone
+#    username: postgres
+#    password: postgres
+  #Hibernate Configuration - database configuration is also required
+#  jpa:
+#    hibernate.ddl-auto: update
+#    show-sql: true
+
+
+debug: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 7080
