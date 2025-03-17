@@ -1,6 +1,5 @@
 spring:
-  application:
-    name: account-service
+ 
   devtools:
     restart:
       poll-interval: 2s
