@@ -6,13 +6,6 @@ spring:
       poll-interval: 2s
       quiet-period: 1s
 
-  cloud:
-    config:
-      uri: http://localhost:8888  # Config Server URL
-      fail-fast: true  # Ensure it fails fast if config is missing
-
-  profiles:
-    active: default
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -49,7 +42,7 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8762/eureka/
     register-with-eureka: true
     fetch-registry: true
   instance:
