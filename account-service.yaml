@@ -24,8 +24,8 @@ spring:
   # Database configuration
   datasource:
     url: jdbc:postgresql://localhost:5432/capstone
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update
@@ -41,7 +41,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health,info,metrics"
+        include: *
+  endpoint:
+    health:
+      show-details: always
 
 eureka:
   client:
@@ -53,4 +56,4 @@ eureka:
     prefer-ip-address: true
 
 server:
-  port: ${SERVER_PORT:7070}
+  port: 7070
