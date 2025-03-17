@@ -26,6 +26,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/capstone
     username: postgres
     password: postgres
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -41,7 +42,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: *
+        include: "*"
   endpoint:
     health:
       show-details: always
