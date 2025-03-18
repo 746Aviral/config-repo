@@ -6,7 +6,21 @@ spring:
     restart:
       poll-interval: 2s
       quiet-period: 1s
-      
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/capstone
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 management:
   endpoints:
     web:
@@ -16,10 +30,9 @@ management:
     health:
       show-details: always
 
-
 server:
   port: 7079
-  
+
 eureka:
   client:
     service-url:
