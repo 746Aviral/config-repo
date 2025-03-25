@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: transaction-service
   devtools:
     restart:
       poll-interval: 2s
