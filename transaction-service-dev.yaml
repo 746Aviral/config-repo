@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: transaction-service
   devtools:
     restart:
       poll-interval: 2s
@@ -8,34 +6,35 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: transaction-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
-  # Database configuration
+  # Database Configuration
   datasource:
     url: jdbc:postgresql://localhost:5432/capstone
-    username: postgres
+    username: postgres   # Use environment variables for security
     password: postgres
+
   # Hibernate Configuration
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate  # Change to 'update' only for development
     show-sql: true
 
 debug: true
+
+logging:
+  level:
+    org.apache.kafka: DEBUG
+    org.hibernate.SQL: DEBUG
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-server:
-  port: 8082
