@@ -8,7 +8,7 @@ spring:
       quiet-period: 1s
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_SERVICE:localhost}:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -19,7 +19,7 @@ spring:
 
   # Database Configuration
   datasource:
-    url: jdbc:postgresql://localhost:5432/capstone
+    url: jdbc:postgresql://${POSTGRES_SERVICE:localhost}:5432/capstone
     username: postgres
     password: postgres
 
