@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: transaction-service
@@ -40,6 +41,16 @@ management:
     web:
       exposure:
         include: "*"
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${REGISTRY_SERVICE:localhost}:8761/eureka/
+  instance:
+    prefer-ip-address: true
 
 
 server:
