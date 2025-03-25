@@ -17,13 +17,13 @@ spring:
   # Database Configuration
   datasource:
     url: jdbc:postgresql://localhost:5432/capstone
-    username: postgres   # Use environment variables for security
+    username: postgres
     password: postgres
 
   # Hibernate Configuration
   jpa:
     hibernate:
-      ddl-auto: update  # Change to 'update' only for development
+      ddl-auto: update
     show-sql: true
 
 debug: true
