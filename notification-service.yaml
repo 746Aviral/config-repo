@@ -19,21 +19,7 @@ server:
 #       key-serializer: org.apache.kafka.common.serialization.StringSerializer
 #       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-  # mail:
-  #   host: smtp.gmail.com
-  #   port: 587
-  #   username: interview0241@gmail.com  # Use env variables instead of hardcoding credentials
-  #   password: jbkl psqx vjzu abzj  # Secure this in environment variables or Vault
-  #   protocol: smtp
-  #   tls: true
-  #   properties:
-  #     mail:
-  #       smtp:
-  #         auth: true
-  #         starttls:
-  #           enable: true
-  #         ssl:
-  #           trust: smtp.gmail.com
+  
 
   datasource:
     url: jdbc:postgresql://localhost:5432/bankingapp
