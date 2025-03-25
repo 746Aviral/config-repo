@@ -23,7 +23,7 @@ spring:
   # Hibernate Configuration
   jpa:
     hibernate:
-      ddl-auto: validate  # Change to 'update' only for development
+      ddl-auto: update  # Change to 'update' only for development
     show-sql: true
 
 debug: true
