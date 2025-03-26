@@ -1,14 +1,16 @@
-server:
-  port: 7076
+
 spring:
   application:
     name: fund-transfer-service
-
+  devtools:
+    restart:
+      poll-interval: 2s
+      quiet-period: 1s
 
 
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_SERVICE:localhost}:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -21,31 +23,42 @@ spring:
         spring.json.trusted.packages: com.blueyonder.bankingapp.model
 
 
+  # Database Configuration
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://${POSTGRES_SERVICE:localhost}:5432/capstone
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver
 
+  # Hibernate Configuration
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
+debug: true
 
-
+logging:
+  level:
+    org.apache.kafka: DEBUG
+    org.hibernate.SQL: DEBUG
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-  endpoint:
-    health:
-      show-details: always
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${REGISTRY_SERVICE:localhost}:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+
+
+server:
+  port: 7076
