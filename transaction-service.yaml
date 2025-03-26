@@ -8,7 +8,7 @@ spring:
       quiet-period: 1s
 
   kafka:
-    bootstrap-servers: ${KAFKA_SERVICE:localhost}:9092
+    bootstrap-servers: ${KAFKA_SERVICE:localhost:9092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
